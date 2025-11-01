@@ -1,0 +1,170 @@
+/* 基本設定 */
+body {
+    background-color: #000; /* 黒背景 */
+    color: #fff; /* 白文字 */
+    font-family: -apple-system, sans-serif; /* iOS風フォント */
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.n-clock-app {
+    width: 100%;
+    max-width: 500px; /* スマホ画面を想定 */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.content-area {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+/* 底部タブバーのデザイン */
+.tab-bar {
+    display: flex;
+    justify-content: space-around;
+    padding: 5px 0;
+    border-top: 1px solid #333; /* 控えめな仕切り線 */
+    background-color: #1c1c1e; /* ダークモードのタブバー背景色 */
+}
+
+.tab-item {
+    background: none;
+    border: none;
+    color: #8e8e93; /* 非アクティブなアイコン色 */
+    padding: 5px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 10px;
+}
+
+.tab-item.active {
+    color: #fff; /* アクティブなアイコン色 */
+}
+
+/* 時計モードの表示 */
+.mode-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.clock-display {
+    font-size: 80px;
+    text-align: center;
+    margin: 40px 0;
+    font-weight: 200;
+}
+
+.control-panel, .settings-list {
+    padding: 10px;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+    margin-bottom: 20px;
+}
+
+/* iOS風トグルスイッチの基本スタイル */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 51px;
+    height: 31px;
+    float: right; /* 設定リスト内で右寄せ */
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #333; 
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 27px;
+    width: 27px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #fff; /* オンで白 */
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px);
+    background-color: #000; /* オンで黒の丸 */
+}
+
+/* 設定リストのスタイル */
+.settings-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: #1c1c1e; /* 設定パネルの背景 */
+    border-radius: 10px;
+}
+
+.settings-list li {
+    padding: 15px;
+    display: flow-root; /* floatをクリア */
+    border-bottom: 1px solid #333;
+}
+
+.settings-list li:last-child {
+    border-bottom: none;
+}
+
+/* === 新しいセグメントコントロールのスタイル === */
+.segmented-control {
+    float: right;
+    display: flex;
+    border: 1px solid #fff; /* 白い枠線 */
+    border-radius: 8px;
+    overflow: hidden;
+    height: 30px;
+}
+
+.segment-button {
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    padding: 0 10px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+    font-size: 14px;
+    line-height: 30px;
+}
+
+.segment-button:not(:last-child) {
+    border-right: 1px solid #fff; /* セグメント間の仕切り線 */
+}
+
+.segment-button.active {
+    background-color: #fff; /* 選択されているボタンの背景を白に */
+    color: #000; /* 選択されているボタンの文字色を黒に */
+}
